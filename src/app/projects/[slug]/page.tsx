@@ -214,11 +214,11 @@ export default function ProjectDetailPage() {
       </AnimatePresence>
 
       {/* Hero with Parallax */}
-      <section ref={heroRef} className="relative h-[80vh] min-h-[600px] flex items-end overflow-hidden">
-        <motion.div style={{ y: heroImgY, scale: heroScale }} className="absolute inset-0">
+      <section ref={heroRef} className="relative h-[80vh] min-h-[600px] flex items-end overflow-hidden bg-black">
+        <motion.div style={{ y: heroImgY, scale: heroScale }} className="absolute inset-0 opacity-40">
           <Image src={project.heroImage} alt={project.name} fill className="object-cover" priority />
         </motion.div>
-        <div className="absolute inset-0 hero-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 container-premium pb-16 md:pb-24">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <Link href="/projects" className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-6 transition-colors">
@@ -232,7 +232,7 @@ export default function ProjectDetailPage() {
                 <Home className="w-3.5 h-3.5" /> {project.type}
               </span>
             </div>
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white text-shadow-hero">
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white">
               {project.name}
             </h1>
             <p className="mt-2 text-xl text-gold-300 font-display italic">{project.tagline}</p>

@@ -67,9 +67,9 @@ export default function AboutPage() {
       {/* Hero */}
       <section
         ref={heroRef}
-        className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden"
+        className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-black"
       >
-        <motion.div style={{ y: heroImgY, scale: heroScale }} className="absolute inset-0">
+        <motion.div style={{ y: heroImgY, scale: heroScale }} className="absolute inset-0 opacity-30">
           <Image
             src="/images/about/about-bg.webp"
             alt="About TST White House"
@@ -78,7 +78,7 @@ export default function AboutPage() {
             priority
           />
         </motion.div>
-        <div className="absolute inset-0 hero-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
         <div className="relative z-10 text-center text-white px-6">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -94,9 +94,9 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-shadow-hero"
+            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold"
           >
-            About <span className="gold-gradient-text text-shadow-gold">TST White House</span>
+            About <span className="gold-gradient-text">TST White House</span>
           </motion.h1>
         </div>
       </section>
@@ -263,8 +263,8 @@ export default function AboutPage() {
 
                   {/* Info */}
                   <div className={`md:col-span-3 p-8 md:p-12 flex flex-col justify-center ${i % 2 === 1 ? "md:order-1" : ""}`}>
-                    <span className="text-gold-500 text-xs font-mono tracking-widest uppercase">
-                      0{i + 1} — {director.title}
+                    <span className="text-gold-500 text-xs tracking-widest uppercase font-semibold">
+                      {director.title}
                     </span>
                     <h3 className="mt-3 font-display text-3xl md:text-4xl font-bold text-[var(--text-primary)]">
                       {director.name}

@@ -40,9 +40,11 @@ export default function ProjectsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[60vh] min-h-[450px] flex items-center justify-center overflow-hidden">
-        <Image src="/images/hero/hero-1.jpg" alt="Projects" fill className="object-cover" priority />
-        <div className="absolute inset-0 hero-overlay" />
+      <section className="relative h-[60vh] min-h-[450px] flex items-center justify-center overflow-hidden bg-black">
+        <div className="absolute inset-0 opacity-30">
+          <Image src="/images/hero/hero-1.jpg" alt="Projects" fill className="object-cover" priority />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
         <div className="relative z-10 text-center text-white px-6">
           <motion.span
             initial={{ opacity: 0, y: 20 }}

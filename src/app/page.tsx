@@ -126,15 +126,15 @@ export default function HomePage() {
   });
   const landBuildingY = useTransform(landProgress, [0, 1], ["20%", "-15%"]);
   const landTextY = useTransform(landProgress, [0, 1], ["0%", "-30%"]);
-  const landHomeY = useTransform(landProgress, [0, 1], ["8%", "-5%"]);
+  const landScale = useTransform(landProgress, [0, 1], [1.1, 1]);
 
   return (
     <>
       {/* ═══════════════ HERO SECTION ═══════════════ */}
-      <section ref={heroRef} className="relative h-screen overflow-hidden">
+      <section ref={heroRef} className="relative h-screen overflow-hidden bg-black">
         <motion.div
           style={{ y: heroY, scale: heroScale }}
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-50"
         >
           <Image
             src="/images/hero/hero-1.jpg"
@@ -145,8 +145,8 @@ export default function HomePage() {
           />
         </motion.div>
 
-        {/* Premium dark shade blend into page background */}
-        <div className="absolute inset-0 hero-overlay" />
+        {/* Premium dark gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black" />
 
         <motion.div
           style={{ opacity: heroOpacity, y: heroTextY }}
@@ -168,11 +168,11 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-[0.9] text-shadow-hero"
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-[0.9]"
           >
             THE NEW WAY
             <br />
-            <span className="gold-gradient-text text-shadow-gold">
+            <span className="gold-gradient-text">
               OF BUILDING
             </span>
           </motion.h1>
@@ -361,15 +361,15 @@ export default function HomePage() {
                       fill
                       className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                     {/* Status Badge */}
                     <div className="absolute top-6 right-6">
                       <span
-                        className={`px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider backdrop-blur-md ${
+                        className={`px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider ${
                           project.status === "Ongoing"
-                            ? "gold-gradient-bg text-white shadow-lg shadow-gold-500/20"
-                            : "bg-white/15 text-white border border-white/20"
+                            ? "gold-gradient-bg text-white"
+                            : "bg-white/20 backdrop-blur-md text-white"
                         }`}
                       >
                         {project.status}
@@ -378,25 +378,21 @@ export default function HomePage() {
 
                     {/* Content */}
                     <div className="absolute bottom-0 left-0 right-0 p-8">
-                      <div className="backdrop-blur-sm bg-black/10 -mx-8 -mb-8 px-8 pb-8 pt-6 rounded-b-3xl">
-                        <div className="flex items-center gap-2 text-white/70 text-sm mb-2 font-medium">
-                          <Home className="w-3.5 h-3.5" />
-                          {project.type} &middot; {project.size}
-                        </div>
-                        <h3 className="font-display text-3xl font-bold text-white mb-2">
-                          {project.name}
-                        </h3>
-                        <p className="text-white/70 text-sm flex items-center gap-1.5">
-                          <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="leading-snug">{project.location}</span>
-                        </p>
+                      <div className="flex items-center gap-2 text-white/60 text-sm mb-3">
+                        <Home className="w-3.5 h-3.5" />
+                        {project.type} &middot; {project.size}
+                      </div>
+                      <h3 className="font-display text-3xl font-bold text-white mb-2">
+                        {project.name}
+                      </h3>
+                      <p className="text-white/60 text-sm flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
+                        {project.location}
+                      </p>
 
-                        <div className="mt-5 flex items-center gap-2 text-gold-300 text-sm font-medium">
-                          <span className="flex items-center gap-2">
-                            View Project
-                            <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-transform duration-300" />
-                          </span>
-                        </div>
+                      <div className="mt-6 flex items-center gap-2 text-gold-300 text-sm font-medium group-hover:gap-3 transition-all duration-300">
+                        View Project
+                        <ArrowUpRight className="w-4 h-4" />
                       </div>
                     </div>
 
@@ -500,108 +496,82 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════ LANDOWNER — CINEMATIC PARALLAX ═══════════════ */}
+      {/* ═══════════════ LANDOWNER — FULL-BLEED PARALLAX ═══════════════ */}
       <section
         ref={landownerRef}
-        className="relative min-h-[100vh] overflow-hidden"
+        className="relative h-[85vh] min-h-[600px] overflow-hidden"
       >
-        {/* Background: Sky image with parallax */}
+        {/* Full-bleed building image as background with parallax */}
         <motion.div
-          style={{ y: landBuildingY }}
+          style={{ y: landBuildingY, scale: landScale }}
           className="absolute inset-0"
         >
           <Image
-            src="/images/about/land-owner-bg.jpg"
-            alt="Sky"
+            src="/images/about/land-owner-home.webp"
+            alt="Premium residence with pool"
             fill
             className="object-cover"
+            sizes="100vw"
           />
         </motion.div>
 
-        {/* Dark overlay for contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60 z-[1]" />
+        {/* Left-side gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-[1]" />
+        {/* Bottom blend into next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 z-[2] bg-gradient-to-t from-[var(--bg-secondary)] to-transparent" />
 
-        {/* Text content - positioned on the left, vertically centered */}
-        <div className="relative z-10 flex items-center min-h-[100vh]">
-          <div className="container-premium w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                style={{ y: landTextY }}
-                className="relative z-20"
+        {/* Text content */}
+        <div className="relative z-10 container-premium h-full flex items-center">
+          <motion.div style={{ y: landTextY }} className="max-w-xl">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-gold-300 font-semibold"
+            >
+              <span className="w-8 h-px bg-gold-300/60" />
+              If You Are A Landowner
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mt-6 font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]"
+            >
+              Give Your Lands
+              <br />A Value Of{" "}
+              <span className="gold-gradient-text">
+                Their Worth
+              </span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mt-6 text-white/60 text-lg max-w-lg"
+            >
+              Partner with us to transform your land into premium developments
+              that maximize value and create lasting legacies.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 mt-10 px-8 py-4 gold-gradient-bg text-white text-sm font-medium uppercase tracking-wider rounded-full hover:shadow-[0_0_40px_rgba(163,117,7,0.4)] transition-all duration-500"
               >
-                <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                  className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-white/80 font-semibold"
-                >
-                  <span className="w-8 h-px bg-white/60" />
-                  If You Are A Landowner
-                </motion.span>
-                <motion.h2
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="mt-6 font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] text-shadow-hero"
-                >
-                  Give Your Lands
-                  <br />A Value Of{" "}
-                  <span className="gold-gradient-text text-shadow-gold">
-                    Their Worth
-                  </span>
-                </motion.h2>
-                <motion.p
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="mt-6 text-white/60 text-lg max-w-lg"
-                >
-                  Partner with us to transform your land into premium developments
-                  that maximize value and create lasting legacies.
-                </motion.p>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                >
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 mt-10 px-8 py-4 gold-gradient-bg text-white text-sm font-medium uppercase tracking-wider rounded-full hover:shadow-[0_0_40px_rgba(163,117,7,0.4)] transition-all duration-500"
-                  >
-                    Partner With Us
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </motion.div>
-              </motion.div>
-
-              {/* Right side space for building image */}
-              <div className="hidden lg:block" />
-            </div>
-          </div>
+                Partner With Us
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
-
-        {/* Building image - full width at bottom, with its own parallax layer */}
-        <motion.div
-          style={{ y: landHomeY }}
-          className="absolute bottom-0 left-0 right-0 z-[15] pointer-events-none"
-        >
-          <div className="relative w-full" style={{ aspectRatio: "16/7" }}>
-            <Image
-              src="/images/about/land-owner-home.webp"
-              alt="Premium residence with pool"
-              fill
-              className="object-contain object-bottom"
-              sizes="100vw"
-            />
-          </div>
-        </motion.div>
-
-        {/* Bottom gradient blend into next section */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 z-[25] bg-gradient-to-t from-[var(--bg-secondary)] via-[var(--bg-secondary)]/60 to-transparent" />
       </section>
 
       {/* ═══════════════ STRENGTHS — BENTO GRID ═══════════════ */}
