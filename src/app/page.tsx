@@ -127,6 +127,11 @@ export default function HomePage() {
   const landBuildingY = useTransform(landProgress, [0, 1], ["20%", "-15%"]);
   const landTextY = useTransform(landProgress, [0, 1], ["0%", "-30%"]);
   const landScale = useTransform(landProgress, [0, 1], [1.1, 1]);
+  const landPoolY = useTransform(landProgress, [0, 1], ["0%", "50%"]);
+  const landPoolOpacity = useTransform(landProgress, [0, 0.5, 1], [0.6, 0.3, 0]);
+  const landOverlayOpacity = useTransform(landProgress, [0, 0.3], [0.85, 0.6]);
+  const landBottomHeight = useTransform(landProgress, [0, 1], ["120px", "200px"]);
+  const landGoldLineScale = useTransform(landProgress, [0.3, 0.6], [0, 1]);
 
   return (
     <>
@@ -361,14 +366,14 @@ export default function HomePage() {
                       fill
                       className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 via-black/40 to-transparent" />
 
                     {/* Status Badge */}
                     <div className="absolute top-6 right-6">
                       <span
                         className={`px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider ${
                           project.status === "Ongoing"
-                            ? "gold-gradient-bg text-white"
+                            ? "gold-gradient-bg text-white shadow-lg shadow-gold-500/20"
                             : "bg-white/20 backdrop-blur-md text-white"
                         }`}
                       >
@@ -378,14 +383,14 @@ export default function HomePage() {
 
                     {/* Content */}
                     <div className="absolute bottom-0 left-0 right-0 p-8">
-                      <div className="flex items-center gap-2 text-white/60 text-sm mb-3">
+                      <div className="flex items-center gap-2 text-white/80 text-sm mb-3 font-medium">
                         <Home className="w-3.5 h-3.5" />
                         {project.type} &middot; {project.size}
                       </div>
                       <h3 className="font-display text-3xl font-bold text-white mb-2">
                         {project.name}
                       </h3>
-                      <p className="text-white/60 text-sm flex items-center gap-1.5">
+                      <p className="text-white/80 text-sm flex items-center gap-1.5 font-medium">
                         <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
                         {project.location}
                       </p>
@@ -496,15 +501,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════ LANDOWNER — FULL-BLEED PARALLAX ═══════════════ */}
+      {/* ═══════════════ LANDOWNER — DRAMATIC CINEMATIC EXPERIENCE ═══════════════ */}
       <section
         ref={landownerRef}
-        className="relative h-[85vh] min-h-[600px] overflow-hidden"
+        className="relative h-screen overflow-hidden"
       >
-        {/* Full-bleed building image as background with parallax */}
+        {/* Layer 1: Building with dramatic parallax and scale */}
         <motion.div
           style={{ y: landBuildingY, scale: landScale }}
-          className="absolute inset-0"
+          className="absolute inset-0 z-0"
         >
           <Image
             src="/images/about/land-owner-home.webp"
@@ -515,63 +520,134 @@ export default function HomePage() {
           />
         </motion.div>
 
-        {/* Left-side gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-[1]" />
-        {/* Bottom blend into next section */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 z-[2] bg-gradient-to-t from-[var(--bg-secondary)] to-transparent" />
+        {/* Layer 2: Floating pool glow effect */}
+        <motion.div
+          style={{ y: landPoolY, opacity: landPoolOpacity }}
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-gold-500/20 via-blue-500/10 to-transparent blur-3xl z-[1]"
+        />
 
-        {/* Text content */}
+        {/* Layer 3: Dark gradient overlay with animated reveal */}
+        <motion.div
+          style={{ opacity: landOverlayOpacity }}
+          className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent z-[2]"
+        />
+
+        {/* Layer 4: Animated bottom blend */}
+        <motion.div
+          style={{ height: landBottomHeight }}
+          className="absolute bottom-0 left-0 right-0 z-[3] bg-gradient-to-t from-[var(--bg-secondary)] via-[var(--bg-secondary)]/80 to-transparent"
+        />
+
+        {/* Layer 5: Floating particles */}
+        <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-gold-400/40 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Text content with dramatic reveal */}
         <div className="relative z-10 container-premium h-full flex items-center">
           <motion.div style={{ y: landTextY }} className="max-w-xl">
             <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-gold-300 font-semibold"
             >
-              <span className="w-8 h-px bg-gold-300/60" />
+              <motion.span
+                initial={{ width: 0 }}
+                whileInView={{ width: 32 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="h-px bg-gold-300/60"
+              />
               If You Are A Landowner
             </motion.span>
+
             <motion.h2
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-6 font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]"
+            >
+              {["Give Your Lands", "A Value Of", "Their Worth"].map((line, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.3 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  {line === "Their Worth" ? (
+                    <span className="gold-gradient-text">{line}</span>
+                  ) : (
+                    line
+                  )}
+                  <br />
+                </motion.div>
+              ))}
+            </motion.h2>
+
+            <motion.p
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mt-6 font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]"
-            >
-              Give Your Lands
-              <br />A Value Of{" "}
-              <span className="gold-gradient-text">
-                Their Worth
-              </span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-6 text-white/60 text-lg max-w-lg"
+              transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-6 text-white/70 text-lg max-w-lg leading-relaxed"
             >
               Partner with us to transform your land into premium developments
               that maximize value and create lasting legacies.
             </motion.p>
+
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 1, delay: 1, ease: [0.16, 1, 0.3, 1] }}
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 mt-10 px-8 py-4 gold-gradient-bg text-white text-sm font-medium uppercase tracking-wider rounded-full hover:shadow-[0_0_40px_rgba(163,117,7,0.4)] transition-all duration-500"
+                className="group relative inline-flex items-center gap-2 mt-10 px-10 py-4 gold-gradient-bg text-white text-sm font-medium uppercase tracking-wider rounded-full overflow-hidden"
               >
-                Partner With Us
-                <ArrowRight className="w-4 h-4" />
+                <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Partner With Us
+                  <motion.span
+                    className="inline-block"
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.span>
+                </span>
               </Link>
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Decorative gold line at bottom */}
+        <motion.div
+          style={{ scaleX: landGoldLineScale }}
+          className="absolute bottom-0 left-0 w-full h-1 gold-gradient-bg z-[4] origin-left"
+        />
       </section>
 
       {/* ═══════════════ STRENGTHS — BENTO GRID ═══════════════ */}

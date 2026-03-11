@@ -66,7 +66,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="section-padding bg-[var(--bg-primary)]">
+      <section className="section-padding bg-[#0a0a0a]">
         <div className="container-premium">
           <div className="space-y-24">
             {allProjects.map((project, index) => (
@@ -89,21 +89,21 @@ export default function ProjectsPage() {
                       </div>
                     </div>
                     <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                      <div className="flex items-center gap-2 text-[var(--text-muted)] text-sm mb-4">
+                      <div className="flex items-center gap-2 text-white/60 text-sm mb-4">
                         <Home className="w-4 h-4" />
                         {project.type}
                       </div>
-                      <h2 className="font-display text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 group-hover:text-gold-500 transition-colors duration-300">
+                      <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 group-hover:text-gold-400 transition-colors duration-300">
                         {project.name}
                       </h2>
-                      <div className="flex items-center gap-2 text-[var(--text-muted)] text-sm mb-6">
+                      <div className="flex items-center gap-2 text-white/60 text-sm mb-6">
                         <MapPin className="w-4 h-4" />
                         {project.location}
                       </div>
-                      <p className="text-[var(--text-secondary)] leading-relaxed mb-8">
+                      <p className="text-white/70 leading-relaxed mb-8">
                         {project.description}
                       </p>
-                      <span className="inline-flex items-center gap-2 text-gold-500 font-medium text-sm uppercase tracking-wider group-hover:gap-3 transition-all duration-300">
+                      <span className="inline-flex items-center gap-2 text-gold-400 font-medium text-sm uppercase tracking-wider group-hover:gap-3 transition-all duration-300">
                         Explore Project <ArrowUpRight className="w-4 h-4" />
                       </span>
                     </div>

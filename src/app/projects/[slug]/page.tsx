@@ -261,11 +261,7 @@ export default function ProjectDetailPage() {
             <AnimatedSection delay={0.2}>
               <div className="relative aspect-square rounded-3xl overflow-hidden group cursor-pointer" onClick={() => openLightbox(0)}>
                 <Image src={project.infoImage} alt={`${project.name} Info`} fill className="object-cover group-hover:scale-105 transition-transform duration-[1.2s] ease-out" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-75 group-hover:scale-100">
-                    <ZoomIn className="w-6 h-6 text-white" />
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
               </div>
             </AnimatedSection>
           </div>
@@ -316,11 +312,7 @@ export default function ProjectDetailPage() {
                   onClick={() => openLightbox(i)}
                 >
                   <Image src={img} alt={`${project.name} ${i + 1}`} width={600} height={450} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.2s] ease-out" />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-75 group-hover:scale-100">
-                      <ZoomIn className="w-5 h-5 text-white" />
-                    </div>
-                  </div>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                 </div>
               </AnimatedSection>
             ))}

@@ -3,20 +3,29 @@
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Phone, Mail, MapPin, Facebook, Clock } from "lucide-react";
+import Image from "next/image";
 
 export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[var(--bg-tertiary)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-tertiary)] via-[var(--bg-tertiary)]/80 to-[var(--bg-tertiary)]" />
-        <div className="relative z-10 text-center px-6">
+      <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-black">
+        <div className="absolute inset-0 opacity-25">
+          <Image
+            src="/images/hero/hero-1.jpg"
+            alt="Contact TST White House"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+        <div className="relative z-10 text-center text-white px-6">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-block text-xs uppercase tracking-[0.3em] text-gold-500 mb-4 font-medium"
+            className="inline-block text-xs uppercase tracking-[0.3em] text-gold-300 mb-4 font-medium"
           >
             Get In Touch
           </motion.span>
@@ -24,7 +33,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-[var(--text-primary)]"
+            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold"
           >
             Contact <span className="gold-gradient-text">Us</span>
           </motion.h1>
