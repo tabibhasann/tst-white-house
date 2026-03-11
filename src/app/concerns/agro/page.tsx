@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Wheat, Droplets, Bean, Phone } from "lucide-react";

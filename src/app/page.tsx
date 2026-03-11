@@ -218,7 +218,7 @@ export default function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hidden sm:block"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
@@ -481,12 +481,12 @@ export default function HomePage() {
                       </h3>
                       {/* Description reveals on hover */}
                       <div className="overflow-hidden">
-                        <p className="mt-3 text-white/60 text-sm leading-relaxed max-h-0 group-hover:max-h-24 transition-all duration-700 ease-out">
+                        <p className="mt-3 text-white/60 text-sm leading-relaxed max-h-24 md:max-h-0 md:group-hover:max-h-24 transition-all duration-700 ease-out">
                           {item.desc}
                         </p>
                       </div>
                       {/* Animated line */}
-                      <div className="mt-4 h-px bg-gradient-to-r from-gold-500 to-transparent w-0 group-hover:w-full transition-all duration-700 ease-out" />
+                      <div className="mt-4 h-px bg-gradient-to-r from-gold-500 to-transparent w-full md:w-0 md:group-hover:w-full transition-all duration-700 ease-out" />
                     </div>
 
                     {/* Top corner glow on hover */}
