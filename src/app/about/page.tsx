@@ -147,17 +147,17 @@ export default function AboutPage() {
           <AnimatedSection className="mt-20 md:mt-28">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { end: 2023, suffix: "", label: "Founded", duration: 2.5 },
-                { end: 3, suffix: "+", label: "Projects", duration: 2 },
-                { end: 4, suffix: "", label: "Business Verticals", duration: 2 },
-                { end: 100, suffix: "%", label: "Commitment", duration: 2 },
+                { end: 2023, suffix: "", label: "Founded", duration: 1.5 },
+                { end: 3, suffix: "+", label: "Projects", duration: 1 },
+                { end: 4, suffix: "", label: "Business Verticals", duration: 1 },
+                { end: 100, suffix: "%", label: "Commitment", duration: 1.2 },
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  transition={{ duration: 0.5, delay: i * 0.05 }}
                   className="text-center p-6 rounded-2xl"
                   style={{ background: "var(--card-bg)", boxShadow: "var(--card-shadow)" }}
                 >

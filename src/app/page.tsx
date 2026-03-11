@@ -303,14 +303,14 @@ export default function HomePage() {
                   initial={{ opacity: 0, x: -20, y: 20 }}
                   whileInView={{ opacity: 1, x: 0, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
                   className="absolute -bottom-6 -left-6 md:-bottom-8 md:-left-8 p-6 md:p-8 rounded-2xl card-elevated gold-border backdrop-blur-sm"
                   style={{ background: "var(--card-bg)" }}
                 >
                   <div className="flex items-center gap-6">
                     <div className="text-center">
                       <span className="block text-3xl md:text-4xl font-display font-bold gold-gradient-text">
-                        <CountUp end={3} suffix="+" />
+                        <CountUp end={3} suffix="+" duration={1} />
                       </span>
                       <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">
                         Projects
@@ -319,7 +319,7 @@ export default function HomePage() {
                     <div className="w-px h-10 bg-[var(--border-color)]" />
                     <div className="text-center">
                       <span className="block text-3xl md:text-4xl font-display font-bold gold-gradient-text">
-                        <CountUp end={2023} duration={2.5} />
+                        <CountUp end={2023} duration={1.5} />
                       </span>
                       <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">
                         Founded
