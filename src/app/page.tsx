@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { CountUp } from "@/components/CountUp";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -197,6 +198,7 @@ export default function HomePage() {
               href="/projects"
               className="group relative px-8 py-4 gold-gradient-bg text-white text-sm font-medium uppercase tracking-wider rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(163,117,7,0.4)]"
             >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               <span className="relative z-10 flex items-center gap-2">
                 Explore Projects
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -308,7 +310,7 @@ export default function HomePage() {
                   <div className="flex items-center gap-6">
                     <div className="text-center">
                       <span className="block text-3xl md:text-4xl font-display font-bold gold-gradient-text">
-                        3+
+                        <CountUp end={3} suffix="+" />
                       </span>
                       <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">
                         Projects
@@ -317,7 +319,7 @@ export default function HomePage() {
                     <div className="w-px h-10 bg-[var(--border-color)]" />
                     <div className="text-center">
                       <span className="block text-3xl md:text-4xl font-display font-bold gold-gradient-text">
-                        2023
+                        <CountUp end={2023} duration={2.5} />
                       </span>
                       <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">
                         Founded
@@ -459,7 +461,7 @@ export default function HomePage() {
               <AnimatedSection key={item.title} delay={i * 0.15}>
                 <div className="group relative h-full">
                   {/* Fixed equal height container */}
-                  <div className="relative h-[500px] md:h-[560px] rounded-3xl overflow-hidden cursor-pointer">
+                  <div className="relative h-[400px] sm:h-[500px] md:h-[560px] rounded-3xl overflow-hidden cursor-pointer">
                     <Image
                       src={item.img}
                       alt={item.title}
@@ -500,7 +502,7 @@ export default function HomePage() {
       {/* ═══════════════ LANDOWNER — CINEMATIC REVEAL ═══════════════ */}
       <section
         ref={landownerRef}
-        className="relative h-[90vh] min-h-[650px] overflow-hidden bg-black"
+        className="relative h-[85vh] min-h-[500px] md:min-h-[650px] overflow-hidden bg-black"
       >
         {/* Full-bleed building image with parallax + zoom */}
         <motion.div
@@ -586,7 +588,7 @@ export default function HomePage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <span className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] block">
+                  <span className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] block">
                     Give Your Lands
                   </span>
                 </motion.div>
@@ -598,7 +600,7 @@ export default function HomePage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <span className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] block">
+                  <span className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] block">
                     A Value Of{" "}
                     <span className="gold-gradient-text">Their Worth</span>
                   </span>
@@ -676,6 +678,8 @@ export default function HomePage() {
                 className={
                   i < 2
                     ? "lg:col-span-3"
+                    : i === 4
+                    ? "lg:col-span-2 md:col-span-2"
                     : "lg:col-span-2"
                 }
               >
@@ -724,7 +728,7 @@ export default function HomePage() {
           </h2>
         </AnimatedSection>
 
-        <div className="relative">
+        <div className="relative marquee-pause">
           <div className="flex animate-marquee gap-6">
             {[...galleryImages, ...galleryImages].map((img, i) => (
               <div
@@ -874,9 +878,10 @@ export default function HomePage() {
                   />
                   <button
                     type="submit"
-                    className="w-full py-4 gold-gradient-bg text-white font-medium uppercase tracking-wider rounded-2xl hover:shadow-[0_0_30px_rgba(163,117,7,0.3)] transition-all duration-500"
+                    className="group relative w-full py-4 gold-gradient-bg text-white font-medium uppercase tracking-wider rounded-2xl overflow-hidden hover:shadow-[0_0_30px_rgba(163,117,7,0.3)] transition-all duration-500"
                   >
-                    Send Message
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                    <span className="relative z-10">Send Message</span>
                   </button>
                 </form>
               </div>

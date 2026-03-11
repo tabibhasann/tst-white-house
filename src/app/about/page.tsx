@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { CountUp } from "@/components/CountUp";
 import { ArrowRight, Building2, Truck, Wheat, HardHat } from "lucide-react";
 
 const directors = [
@@ -146,10 +147,10 @@ export default function AboutPage() {
           <AnimatedSection className="mt-20 md:mt-28">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { value: "2023", label: "Founded" },
-                { value: "3+", label: "Projects" },
-                { value: "4", label: "Business Verticals" },
-                { value: "100%", label: "Commitment" },
+                { end: 2023, suffix: "", label: "Founded", duration: 2.5 },
+                { end: 3, suffix: "+", label: "Projects", duration: 2 },
+                { end: 4, suffix: "", label: "Business Verticals", duration: 2 },
+                { end: 100, suffix: "%", label: "Commitment", duration: 2 },
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}
@@ -161,7 +162,7 @@ export default function AboutPage() {
                   style={{ background: "var(--card-bg)", boxShadow: "var(--card-shadow)" }}
                 >
                   <span className="block text-3xl md:text-4xl font-display font-bold gold-gradient-text">
-                    {stat.value}
+                    <CountUp end={stat.end} suffix={stat.suffix} duration={stat.duration} />
                   </span>
                   <span className="text-xs text-[var(--text-muted)] uppercase tracking-wider mt-1">
                     {stat.label}

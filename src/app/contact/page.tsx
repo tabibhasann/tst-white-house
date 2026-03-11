@@ -8,9 +8,8 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[var(--bg-tertiary)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-tertiary)] via-[var(--bg-tertiary)]/80 to-[var(--bg-tertiary)]" />
+      <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-[var(--bg-tertiary)]">
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-tertiary)] via-[var(--bg-tertiary)] to-[var(--bg-primary)]" />
         <div className="relative z-10 text-center px-6">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -203,9 +202,10 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 gold-gradient-bg text-white font-medium uppercase tracking-wider rounded-xl hover:shadow-[0_0_30px_rgba(163,117,7,0.3)] transition-all duration-500"
+                  className="group relative w-full py-4 gold-gradient-bg text-white font-medium uppercase tracking-wider rounded-xl overflow-hidden hover:shadow-[0_0_30px_rgba(163,117,7,0.3)] transition-all duration-500"
                 >
-                  Send Message
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                  <span className="relative z-10">Send Message</span>
                 </button>
               </form>
             </AnimatedSection>

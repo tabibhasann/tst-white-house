@@ -308,6 +308,11 @@ img {
   animation: marquee 30s linear infinite;
 }
 
+/* Pause marquee on hover */
+.marquee-pause:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
 /* Premium button glow pulse on hover */
 .gold-gradient-bg {
   position: relative;

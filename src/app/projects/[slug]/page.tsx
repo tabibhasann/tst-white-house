@@ -331,8 +331,9 @@ export default function ProjectDetailPage() {
               Get in touch with us to learn more about availability, pricing, and floor plans.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="tel:+8801886773300" className="flex items-center gap-2 px-8 py-4 gold-gradient-bg text-white text-sm font-medium uppercase tracking-wider rounded-full">
-                <Phone className="w-4 h-4" /> Call Us Now
+              <a href="tel:+8801886773300" className="group relative flex items-center gap-2 px-8 py-4 gold-gradient-bg text-white text-sm font-medium uppercase tracking-wider rounded-full overflow-hidden hover:shadow-[0_0_40px_rgba(163,117,7,0.4)] transition-all duration-500">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                <span className="relative z-10 flex items-center gap-2"><Phone className="w-4 h-4" /> Call Us Now</span>
               </a>
               <Link href="/contact" className="flex items-center gap-2 px-8 py-4 border border-[var(--border-color)] text-[var(--text-primary)] text-sm font-medium uppercase tracking-wider rounded-full hover:bg-gold-500/10 transition-all duration-500">
                 <Mail className="w-4 h-4" /> Send Inquiry

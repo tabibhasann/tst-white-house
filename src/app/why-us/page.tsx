@@ -165,7 +165,7 @@ function PillarShowcase({ pillar, index }: { pillar: typeof pillars[number]; ind
                 initial={{ y: 120 }}
                 animate={isInView ? { y: 0 } : {}}
                 transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--text-primary)] leading-[0.95]"
+                className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-[var(--text-primary)] leading-[0.95]"
               >
                 {pillar.category}
               </motion.h2>

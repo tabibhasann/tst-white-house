@@ -71,8 +71,9 @@ export default function MegaStructurePage() {
           <AnimatedSection>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">Partner With Us on Infrastructure</h2>
             <p className="text-[var(--text-secondary)] mb-8 max-w-lg mx-auto">Let&apos;s discuss how we can contribute to your next mega project.</p>
-            <a href="tel:+8801886773300" className="inline-flex items-center gap-2 px-8 py-4 gold-gradient-bg text-white text-sm font-medium uppercase tracking-wider rounded-full">
-              <Phone className="w-4 h-4" /> Contact Us
+            <a href="tel:+8801886773300" className="group relative inline-flex items-center gap-2 px-8 py-4 gold-gradient-bg text-white text-sm font-medium uppercase tracking-wider rounded-full overflow-hidden hover:shadow-[0_0_40px_rgba(163,117,7,0.4)] transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              <span className="relative z-10 flex items-center gap-2"><Phone className="w-4 h-4" /> Contact Us</span>
             </a>
           </AnimatedSection>
         </div>
