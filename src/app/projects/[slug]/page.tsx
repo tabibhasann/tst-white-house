@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { ArrowLeft, MapPin, Home, ArrowRight, Phone, Mail, X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, MapPin, Home, ArrowRight, Phone, Mail, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const projectsData: Record<string, {
   name: string;
@@ -218,7 +218,7 @@ export default function ProjectDetailPage() {
         <motion.div style={{ y: heroImgY, scale: heroScale }} className="absolute inset-0 opacity-40">
           <Image src={project.heroImage} alt={project.name} fill className="object-cover" priority />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-[var(--bg-primary)]" />
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 container-premium pb-16 md:pb-24">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <Link href="/projects" className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-6 transition-colors">

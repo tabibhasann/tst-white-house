@@ -78,7 +78,7 @@ export default function AboutPage() {
             priority
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-[var(--bg-primary)]" />
         <div className="relative z-10 text-center text-white px-6">
           <motion.span
             initial={{ opacity: 0, y: 20 }}

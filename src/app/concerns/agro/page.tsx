@@ -9,16 +9,14 @@ export default function AgroPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[60vh] min-h-[450px] flex items-center justify-center overflow-hidden bg-black">
-        <div className="absolute inset-0 opacity-30">
-          <Image src="/images/concerns/highlight-3.webp" alt="Essential Agro Commodities" fill className="object-cover" priority />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
-        <div className="relative z-10 text-center text-white px-6">
-          <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="inline-block text-xs uppercase tracking-[0.3em] text-gold-300 mb-4 font-medium">
+      <section className="relative h-[60vh] min-h-[450px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-[var(--bg-tertiary)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-tertiary)] via-[var(--bg-tertiary)]/80 to-[var(--bg-tertiary)]" />
+        <div className="relative z-10 text-center px-6">
+          <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="inline-block text-xs uppercase tracking-[0.3em] text-gold-500 mb-4 font-medium">
             Our Concerns
           </motion.span>
-          <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="font-display text-5xl md:text-7xl lg:text-8xl font-bold">
+          <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-[var(--text-primary)]">
             Essential <span className="gold-gradient-text">Agro Commodities</span>
           </motion.h1>
         </div>

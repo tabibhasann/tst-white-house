@@ -13,7 +13,7 @@ export default function MegaStructurePage() {
         <div className="absolute inset-0 opacity-30">
           <Image src="/images/concerns/highlight-2.webp" alt="Mega Structure" fill className="object-cover" priority />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-[var(--bg-primary)]" />
         <div className="relative z-10 text-center text-white px-6">
           <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="inline-block text-xs uppercase tracking-[0.3em] text-gold-300 mb-4 font-medium">
             Our Concerns

@@ -39,12 +39,12 @@ const allProjects = [
 export default function ProjectsPage() {
   return (
     <>
-      {/* Hero */}
+      {/* Hero — blends seamlessly into content */}
       <section className="relative h-[60vh] min-h-[450px] flex items-center justify-center overflow-hidden bg-black">
-        <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 opacity-20">
           <Image src="/images/hero/hero-1.jpg" alt="Projects" fill className="object-cover" priority />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-[var(--bg-primary)]" />
         <div className="relative z-10 text-center text-white px-6">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="section-padding bg-[#0a0a0a]">
+      <section className="section-padding bg-[var(--bg-primary)]">
         <div className="container-premium">
           <div className="space-y-24">
             {allProjects.map((project, index) => (
@@ -89,21 +89,21 @@ export default function ProjectsPage() {
                       </div>
                     </div>
                     <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                      <div className="flex items-center gap-2 text-white/60 text-sm mb-4">
+                      <div className="flex items-center gap-2 text-[var(--text-muted)] text-sm mb-4">
                         <Home className="w-4 h-4" />
                         {project.type}
                       </div>
-                      <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 group-hover:text-gold-400 transition-colors duration-300">
+                      <h2 className="font-display text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 group-hover:text-gold-500 transition-colors duration-300">
                         {project.name}
                       </h2>
-                      <div className="flex items-center gap-2 text-white/60 text-sm mb-6">
+                      <div className="flex items-center gap-2 text-[var(--text-muted)] text-sm mb-6">
                         <MapPin className="w-4 h-4" />
                         {project.location}
                       </div>
-                      <p className="text-white/70 leading-relaxed mb-8">
+                      <p className="text-[var(--text-secondary)] leading-relaxed mb-8">
                         {project.description}
                       </p>
-                      <span className="inline-flex items-center gap-2 text-gold-400 font-medium text-sm uppercase tracking-wider group-hover:gap-3 transition-all duration-300">
+                      <span className="inline-flex items-center gap-2 text-gold-500 font-medium text-sm uppercase tracking-wider group-hover:gap-3 transition-all duration-300">
                         Explore Project <ArrowUpRight className="w-4 h-4" />
                       </span>
                     </div>
